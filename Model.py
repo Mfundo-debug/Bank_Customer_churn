@@ -44,3 +44,5 @@ if st.button('Predict'):
     else:
         st.write('Customer will churn')
 
+# give an output why customer will churn or not with a prediction probability
+xgb_model.predict_proba(features)
