@@ -39,13 +39,13 @@ features = pd.DataFrame({'CreditScore': credit_score, 'Age': age, 'Tenure': tenu
 #Predict
 if st.button('Predict'):
     prediction = xgb_model.predict(features)
+    pred_prob = xgb_model.predict_proba(features)[0][1]
     if prediction == 0:
         st.write('Customer will not churn')
+        st.write('Reason: Prediction Probability is {}'.format(pred_prob))
     else:
         st.write('Customer will churn')
+        st.write('Reason: Prediction Probability is {}'.format(pred_prob))
 
-# give an output why customer will churn or not with a prediction probability
-#print the probability of the prediction
-st.write('Prediction Probability')
-st.write(xgb_model.predict_proba(features))
+
 
