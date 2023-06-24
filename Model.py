@@ -10,12 +10,24 @@ credit_score = st.number_input('Credit Score', min_value=300, max_value=850, val
 balance = st.number_input('Balance', min_value=0, max_value=250000, value=0)
 num_of_products = st.number_input('Number of Products', min_value=1, max_value=4, value=1)
 tenure = st.number_input('Tenure', min_value=0, max_value=10, value=0)
-has_cr_card = st.selectbox('Has Credit Card', [0,1])
-is_active_member = st.selectbox('Is Active Member', [0,1])
-gender = st.selectbox('Gender',[0,1])
+has_cr_card = st.selectbox('Has Credit Card', ['Yes','No'])
+is_active_member = st.selectbox('Is Active Member', ['Yes','No'])
+gender = st.selectbox('Gender',['Male','Female'])
 estimated_salary = st.number_input('Estimated Salary', min_value=0, max_value=250000, value=0)
 geography = st.selectbox('Geography', ['France', 'Germany', 'Spain'])
 #Preprocess user input
+if has_cr_card == 'Yes':
+    has_cr_card = 1
+else:
+    has_cr_card = 0
+if is_active_member == 'Yes':
+    is_active_member = 1
+else:
+    is_active_member = 0
+if gender =='Male':
+    gender = 0
+else:
+    gender = 1
 if geography == 'France':
     geography = 0
 elif geography == 'Germany':
