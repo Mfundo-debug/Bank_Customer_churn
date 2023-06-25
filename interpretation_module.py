@@ -14,7 +14,7 @@ def generate_interpretation(prediction_output):
         interpretation += '\nReason: Prediction Probability is {}'.format(pred_prob)
 
     interpretation += 'Feature Importance:\n'
-    for feature in feature_importances:
-        interpretation += '{}: {}\n'.format(feature[0], feature[1])
+    for feature, importance in feature_importances:
+        interpretation += '{}: {}\n'.format(feature, importance)
 
     return interpretation
