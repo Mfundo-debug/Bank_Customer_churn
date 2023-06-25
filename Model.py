@@ -54,8 +54,8 @@ if st.button('Predict'):
         eli5_weights = eli5.explain_weights(xgb_model)
         feature_importances = eli5_weights.feature_importances.importances
         # map feature indices to feature names
-        feature_names = [f[1:] for f in features.columns]
-        feature_importances = [(feature_names[index], importance) for index, importance in feature_importances]
+        feature_names = list(features.columns)
+        feature_importances = [(feature_names[int(feature.feature[1:])], feature.weight) for feature in feature_importances]
         #create a dataframe with feature names and weights
         importance_df = pd.DataFrame(feature_importances, columns=['Feature', 'Weight'])
         importance_df = importance_df.sort_values(by='Weight', ascending=False)
