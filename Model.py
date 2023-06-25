@@ -62,12 +62,12 @@ if st.button('Predict'):
 
 # Add colors to the data frame
         importance_df['Weight'] = importance_df['Weight'].apply(
-        lambda x: f"color: {'green' if x >= 0 else 'red'}"
+        lambda x: f"<span style='color: {'red' if x < 0.05 else 'green'}'>{x:.4f}</span>"
 )
 
 # Display the data frame
         st.write('Feature Importance')
-        st.dataframe(importance_df)
+        st.write(importance_df.to_html(escape=False), unsafe_allow_html=True)
 
         
         # Generate prediction explanation using eli5
