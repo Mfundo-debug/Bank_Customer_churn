@@ -54,7 +54,7 @@ if st.button('Predict'):
         feature_importances = eli5.format_as_dataframe(eli5.weights)
         st.write('Feature Importance')
         for feature in feature_importances:
-            st.write(f"For feature {feature['feature']} the weight is {feature['weight']}")
+            st.write(f"Feature: {feature.feature}, Weight: {feature.weight}")
         
         # Generate prediction explanation using eli5
         eli5_prediction = eli5.explain_prediction(xgb_model, features.values[0])
