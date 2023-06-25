@@ -64,9 +64,10 @@ if st.button('Predict'):
         prediction_text = eli5.format_as_dataframe(eli5_prediction)
         st.write('Prediction Explanation')
         st.write(prediction_text)
-        # show prediction using eli5 and Ipythons display function
-        from IPython.display import display
-        display(eli5_prediction)
+        # show prediction using eli5.show_prediction
+        st.write('Prediction Explanation using eli5.show_prediction')
+        st.write(eli5.show_prediction(xgb_model, features.values[0]))
+        
 
 
 
