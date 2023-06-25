@@ -68,7 +68,6 @@ if st.button('Predict'):
 # Display the data frame
         st.write('Feature Importance')
         st.write(importance_df.to_html(escape=False), unsafe_allow_html=True)
-        st.dataframe(importance_df)
 
         
         # Generate prediction explanation using eli5
