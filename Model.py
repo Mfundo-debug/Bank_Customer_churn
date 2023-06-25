@@ -62,7 +62,7 @@ if st.button('Predict'):
 
 # Add colors to the data frame
         importance_df['Weight'] = importance_df['Weight'].apply(
-        lambda x: f"<span style='color: {'red' if x < 0 else 'green'}'>{x:.4f}</span>"
+        lambda x: f"<span style='color: {'red' if x < 0.05 else 'green'}'>{x:.4f}</span>"
 )
 
 # Display the data frame
