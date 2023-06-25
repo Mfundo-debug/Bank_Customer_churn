@@ -50,24 +50,34 @@ if st.button('Predict'):
         st.write('Reason: Prediction Probability is {}'.format(pred_prob))
 
         # Generate features weights
+        # Generate feature importance
         eli5_weights = eli5.explain_weights(xgb_model)
         feature_importances = eli5_weights.feature_importances.importances
+
+# Convert feature importances to a data frame
+        importance_df = pd.DataFrame(
+        data=[[f.feature, f.weight] for f in feature_importances],
+        columns=['Feature', 'Weight']
+)
+
+# Add colors to the data frame
+        importance_df['Weight'] = importance_df['Weight'].apply(
+        lambda x: f"color: {'green' if x >= 0 else 'red'}"
+)
+
+# Display the data frame
         st.write('Feature Importance')
-        feature_data = []
-        for feature in feature_importances:
-            feature_data.append([feature.feature, feature.weight])
-        feature_df = pd.DataFrame(feature_data, columns=['Feature', 'Weight'])
-        st.write(feature_df)
+        st.dataframe(importance_df)
+
         
         # Generate prediction explanation using eli5
         eli5_prediction = eli5.explain_prediction(xgb_model, features.values[0])
         prediction_text = eli5.format_as_dataframe(eli5_prediction)
         st.write('Prediction Explanation')
         st.write(prediction_text)
-        # show prediction using eli5.show_prediction
-        st.write('Prediction Explanation using eli5.show_prediction')
-        st.write(eli5.show_prediction(xgb_model, features.values[0]))
+       
         
+
 
 
 
