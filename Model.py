@@ -53,8 +53,11 @@ if st.button('Predict'):
         eli5_weights = eli5.explain_weights(xgb_model)
         feature_importances = eli5_weights.feature_importances.importances
         st.write('Feature Importance')
+        feature_data = []
         for feature in feature_importances:
-            st.write(f"Feature: {feature.feature}, Weight: {feature.weight}")
+            feature_data.append([feature.feature, feature.weight])
+        feature_df = pd.DataFrame(feature_data, columns=['Feature', 'Weight'])
+        st.write(feature_df)
         
         # Generate prediction explanation using eli5
         eli5_prediction = eli5.explain_prediction(xgb_model, features.values[0])
@@ -64,7 +67,7 @@ if st.button('Predict'):
         # show prediction using eli5 and Ipythons display function
         from IPython.display import display
         display(eli5_prediction)
-        
+
 
 
 
