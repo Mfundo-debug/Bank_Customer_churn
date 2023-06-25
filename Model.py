@@ -50,13 +50,16 @@ if st.button('Predict'):
         st.write('Reason: Prediction Probability is {}'.format(pred_prob))
 
         # Generate features weights
-        eli5_weights = eli5.explain_weights(xgb_model)
+        eli5.weights = eli5.explain_weights(xgb_model)
+        feature_importances = eli5.format_as_dataframe(eli5.weights)
         st.write('Feature Importance')
-        st.markdown(eli5_weights)
+        for feature in feature_importances:
+            st.write(f"For feature {feature['feature']} the weight is {feature['weight']}")
+        
         # Generate prediction explanation using eli5
         eli5_prediction = eli5.explain_prediction(xgb_model, features.values[0])
         st.write('Prediction Explanation')
-        st.markdown(eli5_prediction)
+        st.write(eli5_prediction)
 
 
 
