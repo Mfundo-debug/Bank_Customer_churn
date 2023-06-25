@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import eli5
+from eli5 import explain_weights, explain_prediction
 
 #load xgb model 
 xgb_model = joblib.load('xgb_model.pkl')
@@ -46,6 +48,16 @@ if st.button('Predict'):
     else:
         st.write('Customer will churn')
         st.write('Reason: Prediction Probability is {}'.format(pred_prob))
+
+        # Generate features weights
+        eli5_weights = eli5.explain_weights(xgb_model, feature_names=features.columns.tolist())
+        st.write('Feature Importance')
+        st.write(eli5_weights)
+        # Generate prediction explanation using eli5
+        eli5_prediction = eli5.explain_prediction(xgb_model, features.iloc[0], feature_names=features.columns.tolist())
+        st.write('Prediction Explanation')
+        st.write(eli5_prediction)
+        
 
 
 
