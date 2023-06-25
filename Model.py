@@ -54,7 +54,7 @@ if st.button('Predict'):
         st.write('Feature Importance')
         st.write(eli5_weights)
         # Generate prediction explanation using eli5
-        eli5_prediction = eli5.explain_prediction(xgb_model, features.iloc[0])
+        eli5_prediction = eli5.explain_prediction(xgb_model, features.values[0])
         st.write('Prediction Explanation')
         st.write(eli5_prediction)
 
