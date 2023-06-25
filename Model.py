@@ -58,8 +58,9 @@ if st.button('Predict'):
         
         # Generate prediction explanation using eli5
         eli5_prediction = eli5.explain_prediction(xgb_model, features.values[0])
+        prediction_text = eli5.format_as_dataframe(eli5_prediction)
         st.write('Prediction Explanation')
-        st.write(eli5_prediction)
+        st.write(prediction_text)
 
 
 
