@@ -53,19 +53,17 @@ if st.button('Predict'):
         # Generate feature importance
         eli5_weights = eli5.explain_weights(xgb_model)
         feature_importances = eli5_weights.feature_importances.importances
-
-# Convert feature importances to a data frame
-        importance_df = pd.DataFrame(
-        data=[[f.feature, f.weight] for f in feature_importances],
-        columns=['Feature', 'Weight']
-)
-
-# Add colors to the data frame
+        # map feature indices to feature names
+        feature_names = [f[1:] for f in features.columns]
+        feature_importances = [(feature_names[index], importance) for index, importance in feature_importances]
+        #create a dataframe with feature names and weights
+        importance_df = pd.DataFrame(feature_importances, columns=['Feature', 'Weight'])
+        importance_df = importance_df.sort_values(by='Weight', ascending=False)
+        # Add colors to the data frame
         importance_df['Weight'] = importance_df['Weight'].apply(
-        lambda x: f"<span style='color: {'red' if x < 0.05 else 'green'}'>{x:.4f}</span>"
-)
-
-# Display the data frame
+        lambda x: f"<span style='color: {'red' if x < 0.05 else 'green'}'>{x:.4f}</span>")
+        
+        # Display the data frame
         st.write('Feature Importance')
         st.write(importance_df.to_html(escape=False), unsafe_allow_html=True)
 
