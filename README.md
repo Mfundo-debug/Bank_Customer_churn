@@ -20,7 +20,7 @@ the definition of the columns are as follows:'
 - IsActiveMember: Binary Flag for whether the customer is an active member with the bank or not
 - EstimatedSalary: Estimated salary of the customer in Dollars
 - churn : Binary flag 1 or 0
-#### The notebook contains the following sections:
+#### The Project contains the following sections:
 - [x] Data Cleaning
 - [x] Data Visualization
 - [x] Data Preprocessing
@@ -66,6 +66,9 @@ geography = st.selectbox('Geography', ['France', 'Germany', 'Spain'])
 features = pd.Dataframe({'age':age, 'credit_score': credit_score,....})
 ```
 the rest is history, do feel free to catch on the rest of the code in the file.
+
+#### Preview of the app
+![image](https://github.com/Mfundo-debug/Bank_Customer_churn/blob/main/pic.png)
 ### Conclusion
 - [x] The model was deployed using streamlit.
 - [x] The duration of the project was 3 hours.
