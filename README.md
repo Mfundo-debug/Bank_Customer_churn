@@ -45,7 +45,7 @@ from eli5 import explain_weights, explain_prediction
 #load the xgboost model
 model = joblib.load('xgb_model.pkl')
 ```	
- -[x] Call feature_names function to get the feature names.
+ - [x] Call feature_names function to get the feature names.
 ```python
 #call feature_names function to get the feature names
 st.title('Bank Customer Churn Prediction')
