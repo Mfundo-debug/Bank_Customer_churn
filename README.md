@@ -67,8 +67,9 @@ features = pd.Dataframe({'age':age, 'credit_score': credit_score,....})
 ```
 the rest is history, do feel free to catch on the rest of the code in the file.
 
-#### Preview of the app
+#### Preview of the app and predictions
 ![image](https://github.com/Mfundo-debug/Bank_Customer_churn/blob/main/pic.png)
+![image](https://github.com/Mfundo-debug/Bank_Customer_churn/blob/main/pic_1.png)
 ### Conclusion
 - [x] The model was deployed using streamlit.
 - [x] The duration of the project was 3 hours.
