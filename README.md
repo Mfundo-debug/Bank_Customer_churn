@@ -2,7 +2,7 @@
 Bank Customer Churn Prediction
 
 ## Step by step Documentation for the project
-
+- [x] This document will take you through the summary of this project with a result at the rend
 ### Loading the libraries
 - [x] Please check the requirements.txt file for the libraries used in the project.
 ### EDA.ipynb with code explanation
